@@ -18,8 +18,6 @@ jobs:
         uses: shivammathur/setup-php@v2
         with:
           php-version: ${{ matrix.php-version }}
-          tools: phpize, pecl
-          extensions: swoole
           coverage: none
       - name: Setup Packages
         run: composer update -o
