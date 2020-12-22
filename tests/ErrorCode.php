@@ -12,6 +12,11 @@ namespace Huangdijia\Constants\Tests;
 
 use Huangdijia\Constants\AbstractConstants;
 
+/**
+ * @method static string getMessage(string $code)
+ * @method static string getMessageCn(string $code)
+ * @method static string getMessageEn(string $code)
+ */
 class ErrorCode extends AbstractConstants
 {
     /**
