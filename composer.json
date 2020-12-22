@@ -1,0 +1,33 @@
+{
+    "name": "huangdijia/constants",
+    "description": "A constants component for php",
+    "type": "library",
+    "license": "MIT",
+    "authors": [{
+        "name": "Huangdijia",
+        "email": "huangdijia@gmail.com"
+    }],
+    "require": {
+        "php": ">=7.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^7.0",
+        "phpstan/phpstan": "^0.12",
+        "friendsofphp/php-cs-fixer": "^2.9"
+    },
+    "autoload": {
+        "psr-4": {
+            "Huangdijia\\Constants\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Huangdijia\\Constants\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "test": "phpunit -c phpunit.xml --colors=always",
+        "cs-fix": "php-cs-fixer fix $1",
+        "analyse": "phpstan analyse --memory-limit 300M -l 0 -c phpstan.neon ./src"
+    }
+}
