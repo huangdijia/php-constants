@@ -40,7 +40,7 @@ abstract class AbstractConstants
 
         $code = $arguments[0];
         $name = strtolower(substr($name, 3));
-        $message = static::getValue($class, $code, $name);
+        $message = static::__getValue($class, $code, $name);
 
         array_shift($arguments);
 
@@ -58,10 +58,10 @@ abstract class AbstractConstants
      * @param string $name
      * @return string
      */
-    final protected static function getValue($class, $code, $name)
+    final protected static function __getValue($class, $code, $name)
     {
         if (is_null(self::$annotations)) {
-            self::$annotations = self::getAnnotations($class);
+            self::$annotations = self::__getAnnotations($class);
         }
 
         return self::$annotations[$code][$name] ?? null;
@@ -72,7 +72,7 @@ abstract class AbstractConstants
      * @param string $class
      * @return array
      */
-    final protected static function getAnnotations($class)
+    final protected static function __getAnnotations($class)
     {
         $rc = new ReflectionClass($class);
         $constants = $rc->getConstants();
@@ -81,7 +81,7 @@ abstract class AbstractConstants
         foreach ($constants as $name => $code) {
             $rcc = new ReflectionClassConstant($class, $name);
             $doc = $rcc->getDocComment();
-            $annotations[$code] = self::parse($doc);
+            $annotations[$code] = self::__parse($doc);
         }
 
         return $annotations;
@@ -91,7 +91,7 @@ abstract class AbstractConstants
      * Parse docComment.
      * @return null|array
      */
-    final protected static function parse(string $doc)
+    final protected static function __parse(string $doc)
     {
         $pattern = '/\\@(\\w+)\\(\\"(.+)\\"\\)/U';
         $annotations = [];
