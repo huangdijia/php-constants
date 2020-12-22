@@ -16,7 +16,7 @@ use ReflectionClassConstant;
 
 abstract class AbstractConstants
 {
-    protected static $annotations = null;
+    private static $annotations = null;
 
     final private function __construct()
     {
@@ -58,7 +58,7 @@ abstract class AbstractConstants
      * @param string $name
      * @return string
      */
-    final protected static function __getValue($class, $code, $name)
+    final private static function __getValue($class, $code, $name)
     {
         if (is_null(self::$annotations)) {
             self::$annotations = self::__getAnnotations($class);
@@ -72,7 +72,7 @@ abstract class AbstractConstants
      * @param string $class
      * @return array
      */
-    final protected static function __getAnnotations($class)
+    final private static function __getAnnotations($class)
     {
         $rc = new ReflectionClass($class);
         $constants = $rc->getConstants();
@@ -81,7 +81,7 @@ abstract class AbstractConstants
         foreach ($constants as $name => $code) {
             $rcc = new ReflectionClassConstant($class, $name);
             $doc = $rcc->getDocComment();
-            $annotations[$code] = self::__parse($doc);
+            $annotations[$code] = self::__parseDocComment($doc);
         }
 
         return $annotations;
@@ -91,7 +91,7 @@ abstract class AbstractConstants
      * Parse docComment.
      * @return null|array
      */
-    final protected static function __parse(string $doc)
+    final private static function __parseDocComment(string $doc)
     {
         $pattern = '/\\@(\\w+)\\(\\"(.+)\\"\\)/U';
         $annotations = [];
