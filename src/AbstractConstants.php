@@ -12,7 +12,6 @@ namespace Huangdijia\Constants;
 
 use Huangdijia\Constants\Exceptions\ConstantsException;
 use ReflectionClass;
-use ReflectionClassConstant;
 
 abstract class AbstractConstants
 {
@@ -53,12 +52,11 @@ abstract class AbstractConstants
 
     /**
      * Get Value.
-     * @param object|string $class
      * @param int|string $code
      * @param string $name
      * @return string
      */
-    final private static function __getValue($class, $code, $name)
+    final private static function __getValue(string $class, $code, $name)
     {
         if (is_null(self::$annotations)) {
             self::$annotations = self::__getAnnotations($class);
@@ -69,19 +67,20 @@ abstract class AbstractConstants
 
     /**
      * Get Annotations.
-     * @param string $class
      * @return array
      */
-    final private static function __getAnnotations($class)
+    final private static function __getAnnotations(string $class)
     {
         $rc = new ReflectionClass($class);
         $constants = $rc->getConstants();
         $annotations = [];
 
         foreach ($constants as $name => $code) {
-            $rcc = new ReflectionClassConstant($class, $name);
-            $doc = $rcc->getDocComment();
-            $annotations[$code] = self::__parseDocComment($doc);
+            $doc = $rc->getReflectionConstant($name)->getDocComment();
+
+            if ($doc) {
+                $annotations[$code] = self::__parseDocComment($doc);
+            }
         }
 
         return $annotations;
@@ -96,14 +95,14 @@ abstract class AbstractConstants
         $pattern = '/\\@(\\w+)\\(\\"(.+)\\"\\)/U';
         $annotations = [];
 
-        if (preg_match_all($pattern, $doc, $matches)) {
-            foreach ($matches[1] as $i => $name) {
-                $annotations[strtolower($name)] = $matches[2][$i];
-            }
-
-            return $annotations;
+        if (! preg_match_all($pattern, $doc, $matches)) {
+            return null;
         }
 
-        return null;
+        foreach ($matches[1] as $i => $name) {
+            $annotations[strtolower($name)] = $matches[2][$i];
+        }
+
+        return $annotations;
     }
 }
