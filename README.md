@@ -45,8 +45,8 @@ class ErrorCode extends AbstractConstants
     const FAILURE = 0;
 }
 
-var_dump(ErrorCode::getMessage(ErrorCode::SERVER_ERROR));
-var_dump(ErrorCode::getMessage(ErrorCode::NOT_FOUND, '/api'));
-var_dump(ErrorCode::getMessageCn(ErrorCode::OK));
-var_dump(ErrorCode::getMessageEn(ErrorCode::OK));
+var_dump(ErrorCode::getMessage(ErrorCode::SERVER_ERROR)); // Server Error
+var_dump(ErrorCode::getMessage(ErrorCode::NOT_FOUND, '/api')); // /api not found!
+var_dump(ErrorCode::getMessageCn(ErrorCode::OK)); // 成功
+var_dump(ErrorCode::getMessageEn(ErrorCode::OK)); // Success
 ~~~
