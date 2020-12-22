@@ -28,17 +28,18 @@ abstract class AbstractConstants
 
     final public static function __callStatic($name, $arguments)
     {
-        if (! substr($name, 0, 3) == 'get') {
-            throw new ConstantsException(sprintf('The function %s is not defined!', $name));
+        $class = get_called_class();
+
+        if (strtolower(substr($name, 0, 3)) != 'get') {
+            throw new ConstantsException(sprintf('Call to undefined method %s::%s()', $class, $name));
         }
 
         if (! isset($arguments) || count($arguments) === 0) {
-            throw new ConstantsException('The Code is required');
+            throw new ConstantsException('The code is required');
         }
 
         $code = $arguments[0];
         $name = strtolower(substr($name, 3));
-        $class = get_called_class();
         $message = static::getValue($class, $code, $name);
 
         array_shift($arguments);

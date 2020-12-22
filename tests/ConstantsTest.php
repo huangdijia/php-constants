@@ -10,6 +10,7 @@ declare(strict_types=1);
  */
 namespace Huangdijia\Constants\Tests;
 
+use Huangdijia\Constants\Exceptions\ConstantsException;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -30,5 +31,11 @@ class ConstantsTest extends TestCase
         $path = '/api';
 
         $this->assertEquals(sprintf('%s not found!', $path), ErrorCode::getMessage(ErrorCode::NOT_FOUND, $path));
+    }
+
+    public function testCallUndefinedMethod()
+    {
+        $this->expectException(ConstantsException::class);
+        ErrorCode::abc(ErrorCode::OK);
     }
 }
