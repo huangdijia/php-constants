@@ -1,8 +1,8 @@
 # PHP Constants
 
 [![Latest Test](https://github.com/huangdijia/php-constants/workflows/tests/badge.svg)](https://github.com/huangdijia/php-constants/actions)
-[![Latest Stable Version](https://poser.pugx.org/huangdijia/php-constants/version.png)](https://packagist.org/packages/huangdijia/php-constants)
-[![Total Downloads](https://poser.pugx.org/huangdijia/php-constants/d/total.png)](https://packagist.org/packages/huangdijia/php-constants)
+[![Latest Stable Version](https://poser.pugx.org/huangdijia/constants/version.png)](https://packagist.org/packages/huangdijia/constants)
+[![Total Downloads](https://poser.pugx.org/huangdijia/constants/d/total.png)](https://packagist.org/packages/huangdijia/constants)
 [![GitHub license](https://img.shields.io/github/license/huangdijia/php-constants)](https://github.com/huangdijia/php-constants)
 
 A constants component for php
