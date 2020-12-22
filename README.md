@@ -47,4 +47,6 @@ class ErrorCode extends AbstractConstants
 
 var_dump(ErrorCode::getMessage(ErrorCode::SERVER_ERROR));
 var_dump(ErrorCode::getMessage(ErrorCode::NOT_FOUND, '/api'));
+var_dump(ErrorCode::getMessageCn(ErrorCode::OK));
+var_dump(ErrorCode::getMessageEn(ErrorCode::OK));
 ~~~
