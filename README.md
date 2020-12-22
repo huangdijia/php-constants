@@ -15,6 +15,28 @@ composer require huangdijia/constants
 
 ## Usage
 
+- Before
+
+~~~php
+class ErrorCode
+{
+    const NOT_FOUND = 404;
+    const SERVER_ERROR = 500;
+
+    public static $errors = [
+        self::NOT_FOUND => 'Not Found',
+        self::SERVER_ERROR => 'Server Error',
+    ];
+
+    public static function getMessage($code)
+    {
+        return self::$errors[$code] ?? '';
+    }
+}
+~~~
+
+- Now
+
 ~~~php
 namespace App\Constants;
 
