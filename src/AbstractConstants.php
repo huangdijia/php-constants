@@ -71,8 +71,8 @@ abstract class AbstractConstants
      */
     final private static function __getAnnotations(string $class)
     {
-        $rc = new ReflectionClass($class);
-        $constants = $rc->getReflectionConstants();
+        $reflect = new ReflectionClass($class);
+        $constants = $reflect->getReflectionConstants();
         $annotations = [];
 
         foreach ($constants as $constant) {
