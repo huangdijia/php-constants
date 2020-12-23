@@ -72,11 +72,12 @@ abstract class AbstractConstants
     final private static function __getAnnotations(string $class)
     {
         $rc = new ReflectionClass($class);
-        $constants = $rc->getConstants();
+        $constants = $rc->getReflectionConstants();
         $annotations = [];
 
-        foreach ($constants as $name => $code) {
-            $doc = $rc->getReflectionConstant($name)->getDocComment();
+        foreach ($constants as $constant) {
+            $code = $constant->getValue();
+            $doc = $constant->getDocComment();
 
             if ($doc) {
                 $annotations[$code] = self::__parseDocComment($doc);
@@ -88,7 +89,7 @@ abstract class AbstractConstants
 
     /**
      * Parse docComment.
-     * @return null|array
+     * @return null|string[]
      */
     final private static function __parseDocComment(string $doc)
     {
