@@ -1,14 +1,20 @@
 <?php
-
+/**
+ * This file is part of laravel-jsonrpc.
+ *
+ * @link https://github.com/huangdijia/laravel-jsonrpc/blob/2.x/README.md
+ * @contact  huangdijia@gmail.com
+ * @license  https://github.com/huangdijia/laravel-jsonrpc/blob/2.x/LICENSE
+ */
 $header = <<<'EOF'
 This file is part of huangdijia/constants.
 
-@link     https://code.addcn.com/huangdijia/php-constants
-@document https://code.addcn.com/huangdijia/php-constants/blob/main/README.md
+@link     https://github.com/huangdijia/php-constants
+@document https://github.com/huangdijia/php-constants/blob/main/README.md
 @contact  huangdijia@gmail.com
 EOF;
 
-return PhpCsFixer\Config::create()
+return (new PhpCsFixer\Config())
     ->setRiskyAllowed(true)
     ->setRules([
         '@PSR2' => true,
@@ -16,19 +22,19 @@ return PhpCsFixer\Config::create()
         '@DoctrineAnnotation' => true,
         '@PhpCsFixer' => true,
         'header_comment' => [
-            'commentType' => 'PHPDoc',
+            'comment_type' => 'PHPDoc',
             'header' => $header,
             'separate' => 'none',
             'location' => 'after_declare_strict',
         ],
         'array_syntax' => [
-            'syntax' => 'short'
+            'syntax' => 'short',
         ],
         'list_syntax' => [
-            'syntax' => 'short'
+            'syntax' => 'short',
         ],
         'concat_space' => [
-            'spacing' => 'one'
+            'spacing' => 'one',
         ],
         'blank_line_before_statement' => [
             'statements' => [
@@ -37,7 +43,7 @@ return PhpCsFixer\Config::create()
         ],
         'general_phpdoc_annotation_remove' => [
             'annotations' => [
-                'author'
+                'author',
             ],
         ],
         'ordered_imports' => [
@@ -66,7 +72,7 @@ return PhpCsFixer\Config::create()
         ],
         'class_attributes_separation' => true,
         'combine_consecutive_unsets' => true,
-        'declare_strict_types' => true,
+        'declare_strict_types' => false,
         'linebreak_after_opening_tag' => true,
         'lowercase_static_reference' => true,
         'no_useless_else' => true,
@@ -82,6 +88,7 @@ return PhpCsFixer\Config::create()
     ])
     ->setFinder(
         PhpCsFixer\Finder::create()
+            ->exclude('bin')
             ->exclude('public')
             ->exclude('runtime')
             ->exclude('vendor')
