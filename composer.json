@@ -25,6 +25,11 @@
             "Huangdijia\\Constants\\Tests\\": "tests/"
         }
     },
+    "extra": {
+        "branch-alias": {
+            "dev-main": "1.0-dev"
+        }
+    },
     "scripts": {
         "test": "phpunit -c phpunit.xml --colors=always",
         "cs-fix": "php-cs-fixer fix $1",
