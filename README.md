@@ -5,19 +5,19 @@
 [![Total Downloads](https://poser.pugx.org/huangdijia/constants/d/total.png)](https://packagist.org/packages/huangdijia/constants)
 [![GitHub license](https://img.shields.io/github/license/huangdijia/php-constants)](https://github.com/huangdijia/php-constants)
 
-A constants component for php
+A constants component for PHP.
 
 ## Installation
 
-~~~base
+```shell
 composer require huangdijia/constants
-~~~
+```
 
 ## Usage
 
 - Before
 
-~~~php
+```php
 class ErrorCode
 {
     const NOT_FOUND = 404;
@@ -33,11 +33,11 @@ class ErrorCode
         return self::$errors[$code] ?? '';
     }
 }
-~~~
+```
 
 - Now
 
-~~~php
+```php
 namespace App\Constants;
 
 use Huangdijia\Constants\AbstractConstants;
@@ -76,4 +76,4 @@ var_dump(ErrorCode::getMessage(ErrorCode::SERVER_ERROR)); // Server Error
 var_dump(ErrorCode::getMessage(ErrorCode::NOT_FOUND, '/api')); // /api not found!
 var_dump(ErrorCode::getMessageCn(ErrorCode::OK)); // 成功
 var_dump(ErrorCode::getMessageEn(ErrorCode::OK)); // Success
-~~~
+```
