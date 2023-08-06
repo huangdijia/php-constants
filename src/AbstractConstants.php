@@ -17,15 +17,15 @@ abstract class AbstractConstants
 {
     private static $annotations;
 
-    final private function __construct()
+    private function __construct()
     {
     }
 
-    final private function __clone()
+    private function __clone()
     {
     }
 
-    final public static function __callStatic($name, $arguments)
+    public static function __callStatic($name, $arguments)
     {
         $class = get_called_class();
 
@@ -56,7 +56,7 @@ abstract class AbstractConstants
      * @param string $name
      * @return string
      */
-    final private static function __getValue(string $class, $code, $name)
+    private static function __getValue(string $class, $code, $name)
     {
         if (is_null(self::$annotations)) {
             self::$annotations = self::__getAnnotations($class);
@@ -69,7 +69,7 @@ abstract class AbstractConstants
      * Get Annotations.
      * @return array
      */
-    final private static function __getAnnotations(string $class)
+    private static function __getAnnotations(string $class)
     {
         $reflect = new ReflectionClass($class);
         $constants = $reflect->getReflectionConstants();
@@ -91,7 +91,7 @@ abstract class AbstractConstants
      * Parse docComment.
      * @return null|string[]
      */
-    final private static function __parseDocComment(string $doc)
+    private static function __parseDocComment(string $doc)
     {
         $pattern = '/\\@(\\w+)\\(\\"(.+)\\"\\)/U';
         $annotations = [];
