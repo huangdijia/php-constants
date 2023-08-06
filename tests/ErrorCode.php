@@ -22,22 +22,22 @@ class ErrorCode extends AbstractConstants
     /**
      * @Message("%s not found!")
      */
-    const NOT_FOUND = 404;
+    public const NOT_FOUND = 404;
 
     /**
      * @Message("Server Error")
      */
-    const SERVER_ERROR = 500;
+    public const SERVER_ERROR = 500;
 
     /**
      * @MessageCn("成功")
      * @MessageEn("Success")
      */
-    const OK = 1;
+    public const OK = 1;
 
     /**
      * @MessageCn("失败")
      * @MessageEn("Failure")
      */
-    const FAILURE = 0;
+    public const FAILURE = 0;
 }
