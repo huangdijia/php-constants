@@ -1,6 +1,6 @@
 {
     "name": "huangdijia/constants",
-    "description": "A constants component for php",
+    "description": "A constants component for PHP.",
     "type": "library",
     "license": "MIT",
     "authors": [{
